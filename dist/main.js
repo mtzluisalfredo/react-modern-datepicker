@@ -3411,7 +3411,8 @@ var DInput = /*#__PURE__*/styled_components_browser_esm.input.withConfig({
 
 var Input = function Input(props) {
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(DInput, Input_extends({}, props, {
-    className: props.className
+    className: props.className,
+    autocomplete: "off"
   }));
 };
 
@@ -3550,7 +3551,7 @@ var DateEditor = function DateEditor(props) {
       minDate = props.minDate,
       primaryTextColor = props.primaryTextColor,
       _props$sortHeader = props.sortHeader,
-      sortHeader = _props$sortHeader === void 0 ? ['d', 'm', 'y'] : _props$sortHeader;
+      sortHeader = _props$sortHeader === void 0 ? ['m', 'd', 'y'] : _props$sortHeader;
 
   var _date = dayjs_min_default()(date || dayjs_min_default()().format(format || 'DD-MM-YYYY'), format || 'DD-MM-YYYY');
 
