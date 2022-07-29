@@ -4485,8 +4485,8 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
           isValid = _this$state4.isValid,
           yearBlock = _this$state4.yearBlock,
           textDate = _this$state4.textDate;
-      console.log('TCL ~ ModernDatepicker ~ setViewFor', setViewFor);
       var _this$props7 = this.props,
+          sortHeader = _this$props7.sortHeader,
           allowEdit = _this$props7.allowEdit,
           format = _this$props7.format,
           placeholder = _this$props7.placeholder,
@@ -4563,6 +4563,7 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(elements_DateEditor, {
         date: dateToEdit,
         format: format,
+        sortHeader: sortHeader,
         lang: lang,
         maxDate: _maxDate,
         minDate: _minDate,

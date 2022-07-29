@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.24% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>97/161</span>
+                <span class='fraction'>96/160</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.74% </span>
+                <span class="strong">59.49% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>95/159</span>
+                <span class='fraction'>94/158</span>
             </div>
         
             
@@ -443,9 +443,7 @@
 <a name='L378'></a><a href='#L378'>378</a>
 <a name='L379'></a><a href='#L379'>379</a>
 <a name='L380'></a><a href='#L380'>380</a>
-<a name='L381'></a><a href='#L381'>381</a>
-<a name='L382'></a><a href='#L382'>382</a>
-<a name='L383'></a><a href='#L383'>383</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L381'></a><a href='#L381'>381</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -647,8 +645,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -706,7 +702,6 @@
 <span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-yes">41x</span>
-<span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -736,6 +731,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1028,9 +1024,7 @@ class ModernDatepicker extends Component {
     });
   }
 <span class="fstat-no" title="function not covered" >  op</span>enViewFor(setViewFor) {
-<span class="cstat-no" title="statement not covered" >    this.setState({</span>
-      setViewFor
-    });
+<span class="cstat-no" title="statement not covered" >    this.setState({ setViewFor });</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  on</span>DateEnter(e) {
@@ -1082,8 +1076,7 @@ class ModernDatepicker extends Component {
 &nbsp;
   render() {
     const { showContainer, setViewFor, dateToEdit, isValid, yearBlock, textDate } = this.state;
-    console.log('TCL ~ ModernDatepicker ~ setViewFor', setViewFor);
-    const { allowEdit, format, placeholder, showBorder, className, id, icon, iconClass, maxDate, minDate, label, labelClass, lang, primaryColor = '#00b9f5', secondaryColor = 'white', primaryTextColor = 'black', secondaryTextColor = 'white' } = this.props;
+    const { sortHeader, allowEdit, format, placeholder, showBorder, className, id, icon, iconClass, maxDate, minDate, label, labelClass, lang, primaryColor = '#00b9f5', secondaryColor = 'white', primaryTextColor = 'black', secondaryTextColor = 'white' } = this.props;
     const [, isMaxInstanceOfDate, isMinInstanceOfDate] = this.checkDateInstance();
     const _minDate = minDate ? (isMinInstanceOfDate ? dayjs(minDate).format(format || <span class="branch-1 cbranch-no" title="branch not covered" >'DD-MM-YYYY')</span> : dayjs(minDate, format || <span class="branch-1 cbranch-no" title="branch not covered" >'DD-MM-YYYY')</span>.format(format || <span class="branch-1 cbranch-no" title="branch not covered" >'DD-MM-YYYY')</span>) : null;
     const _maxDate = maxDate ? (isMaxInstanceOfDate ? dayjs(maxDate).format(format || <span class="branch-1 cbranch-no" title="branch not covered" >'DD-MM-YYYY')</span> : dayjs(maxDate, format || <span class="branch-1 cbranch-no" title="branch not covered" >'DD-MM-YYYY')</span>.format(format || <span class="branch-1 cbranch-no" title="branch not covered" >'DD-MM-YYYY')</span>) : null;
@@ -1126,6 +1119,7 @@ class ModernDatepicker extends Component {
             &lt;DateEditor
               date={dateToEdit}
               format={format}
+              sortHeader={sortHeader}
               lang={lang}
               maxDate={_maxDate}
               minDate={_minDate}
@@ -1216,7 +1210,7 @@ export default ModernDatepicker;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-07-29T07:08:18.634Z
+                at 2022-07-29T07:22:58.256Z
             </div>
         <script src="../prettify.js"></script>
         <script>
