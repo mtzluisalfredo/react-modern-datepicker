@@ -3496,6 +3496,18 @@ var SingleArrow = /*#__PURE__*/styled_components_browser_esm.span.withConfig({
 });
 /* harmony default export */ const elements_SingleArrow = (SingleArrow);
 ;// CONCATENATED MODULE: ./lib/elements/DateEditor.js
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 
@@ -3536,7 +3548,9 @@ var DateEditor = function DateEditor(props) {
       viewFor = props.viewFor,
       maxDate = props.maxDate,
       minDate = props.minDate,
-      primaryTextColor = props.primaryTextColor;
+      primaryTextColor = props.primaryTextColor,
+      _props$sortHeader = props.sortHeader,
+      sortHeader = _props$sortHeader === void 0 ? ['d', 'm', 'y'] : _props$sortHeader;
 
   var _date = dayjs_min_default()(date || dayjs_min_default()().format(format || 'DD-MM-YYYY'), format || 'DD-MM-YYYY');
 
@@ -3548,25 +3562,33 @@ var DateEditor = function DateEditor(props) {
   var day = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY').format('DD') : defaultDate.format('DD');
   var month = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY').format('MMM') : defaultDate.format('MMM');
   var year = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY').format('YYYY') : defaultDate.format('YYYY');
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Wrapper, null, viewFor === 'date' ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(SelectedSpan, {
-    onClick: onDateClick,
-    primaryTextColor: primaryTextColor
-  }, day) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Span, {
-    onClick: onDateClick,
-    primaryTextColor: primaryTextColor
-  }, day), viewFor === 'month' ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(SelectedSpan, {
-    onClick: onMonthClick,
-    primaryTextColor: primaryTextColor
-  }, month) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Span, {
-    onClick: onMonthClick,
-    primaryTextColor: primaryTextColor
-  }, month), viewFor === 'year' ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(SelectedSpan, {
-    onClick: onYearClick,
-    primaryTextColor: primaryTextColor
-  }, year) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Span, {
-    onClick: onYearClick,
-    primaryTextColor: primaryTextColor
-  }, year));
+  var actionsClick = {
+    'd': viewFor === 'date' ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(SelectedSpan, {
+      onClick: onDateClick,
+      primaryTextColor: primaryTextColor
+    }, day) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Span, {
+      onClick: onDateClick,
+      primaryTextColor: primaryTextColor
+    }, day),
+    'm': viewFor === 'month' ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(SelectedSpan, {
+      onClick: onMonthClick,
+      primaryTextColor: primaryTextColor
+    }, month) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Span, {
+      onClick: onMonthClick,
+      primaryTextColor: primaryTextColor
+    }, month),
+    'y': viewFor === 'year' ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(SelectedSpan, {
+      onClick: onYearClick,
+      primaryTextColor: primaryTextColor
+    }, year) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Span, {
+      onClick: onYearClick,
+      primaryTextColor: primaryTextColor
+    }, year)
+  };
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Wrapper, null, _toConsumableArray(sortHeader).map(function (element) {
+    var letter = String(element).toLowerCase().charAt(0);
+    return actionsClick[letter] || /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Span, null);
+  }));
 };
 
 DateEditor.propTypes = {
@@ -4065,13 +4087,13 @@ CalendarBody.propTypes = {
 ;// CONCATENATED MODULE: ./lib/components/ModernDatepicker.js
 function ModernDatepicker_typeof(obj) { "@babel/helpers - typeof"; return ModernDatepicker_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, ModernDatepicker_typeof(obj); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || ModernDatepicker_unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function ModernDatepicker_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return ModernDatepicker_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return ModernDatepicker_arrayLikeToArray(o, minLen); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function ModernDatepicker_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
