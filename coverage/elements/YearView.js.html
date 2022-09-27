@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24.32% </span>
+                <span class="strong">22.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/37</span>
+                <span class='fraction'>9/40</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/72</span>
+                <span class='fraction'>0/79</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">23.07% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/36</span>
+                <span class='fraction'>9/39</span>
             </div>
         
             
@@ -168,7 +168,17 @@
 <a name='L103'></a><a href='#L103'>103</a>
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,11 +223,21 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -318,11 +338,21 @@ const getYears = <span class="fstat-no" title="function not covered" >(y</span>e
 <span class="cstat-no" title="statement not covered" >  return years;</span>
 };
 const YearView = <span class="fstat-no" title="function not covered" >pr</span>ops =&gt; {
-  const { date, format, onYearChange, yearBlock, maxDate, minDate, primaryColor, secondaryColor, primaryTextColor, secondaryTextColor } = <span class="cstat-no" title="statement not covered" >props;  </span>
+&nbsp;
+&nbsp;
+  const { defaultDateView, date, format, onYearChange, yearBlock, maxDate, minDate, primaryColor, secondaryColor, primaryTextColor, secondaryTextColor } = <span class="cstat-no" title="statement not covered" >props;  </span>
   const _date = <span class="cstat-no" title="statement not covered" >dayjs(date || dayjs().format(format || 'DD-MM-YYYY'), format || 'DD-MM-YYYY');</span>
   const _minDate = <span class="cstat-no" title="statement not covered" >dayjs(minDate, format || 'DD-MM-YYYY');</span>
   const _maxDate = <span class="cstat-no" title="statement not covered" >dayjs(maxDate, format || 'DD-MM-YYYY'); </span>
-  const defaultDate = <span class="cstat-no" title="statement not covered" >_date.isBetween( minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate &amp;&amp; _maxDate.isSameOrAfter(_date) ? _date : minDate &amp;&amp; _minDate.isSameOrBefore(_date)  ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;</span>
+&nbsp;
+  
+  let defaultDate = <span class="cstat-no" title="statement not covered" >'';</span>
+<span class="cstat-no" title="statement not covered" >  if (defaultDateView &amp;&amp; !date &amp;&amp; dayjs(defaultDateView).isValid()) {</span>
+<span class="cstat-no" title="statement not covered" >    defaultDate = dayjs(defaultDateView, format || 'DD-MM-YYYY');</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    defaultDate = _date.isBetween( minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate &amp;&amp; _maxDate.isSameOrAfter(_date) ? _date : minDate &amp;&amp; _minDate.isSameOrBefore(_date)  ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;</span>
+  }
+&nbsp;
   const mainDate = <span class="cstat-no" title="statement not covered" >date ? dayjs(date, format || 'DD-MM-YYYY')  : defaultDate; </span>
   const endDate = <span class="cstat-no" title="statement not covered" >maxDate ? dayjs(maxDate, format || 'DD-MM-YYYY') : null;</span>
   const startDate = <span class="cstat-no" title="statement not covered" >minDate ? dayjs(minDate, format || 'DD-MM-YYYY') : null;</span>
@@ -341,7 +371,7 @@ const YearView = <span class="fstat-no" title="function not covered" >pr</span>o
               primaryColor={primaryColor}
               primaryTextColor={primaryTextColor}
               secondaryTextColor={secondaryTextColor}
-                                     &gt;{year.y}&lt;/SelectedSpan&gt; : &lt;YSpan 
+              &gt;{year.y}&lt;/SelectedSpan&gt; : &lt;YSpan 
               isMax={year.isMax}
               isMin={year.isMin}
               key={k}
@@ -385,7 +415,7 @@ export default YearView;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-27T19:15:26.552Z
+                at 2022-09-27T19:27:01.695Z
             </div>
         <script src="../prettify.js"></script>
         <script>

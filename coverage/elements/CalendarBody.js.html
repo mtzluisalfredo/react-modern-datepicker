@@ -136,7 +136,10 @@
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,18 +155,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,7 +223,7 @@ import YearView from './YearView';
 import Wrapper from './Wrapper';
 &nbsp;
 const CalendarBody = <span class="fstat-no" title="function not covered" >pr</span>ops =&gt; {
-  const { viewFor, date, format, onChange, yearBlock, maxDate, minDate, primaryColor, secondaryColor, primaryTextColor, secondaryTextColor } = <span class="cstat-no" title="statement not covered" >props;  </span>
+  const { defaultDateView, viewFor, date, format, onChange, yearBlock, maxDate, minDate, primaryColor, secondaryColor, primaryTextColor, secondaryTextColor } = <span class="cstat-no" title="statement not covered" >props;  </span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;Wrapper secondaryColor={secondaryColor}&gt;
       {viewFor === 'date' &amp;&amp; &lt;DateView
@@ -225,17 +231,19 @@ const CalendarBody = <span class="fstat-no" title="function not covered" >pr</sp
         format={format}
         maxDate={maxDate}
         minDate={minDate}
+        defaultDateView={defaultDateView}
         onDateChange={<span class="fstat-no" title="function not covered" >(v</span>alue) =&gt; <span class="cstat-no" title="statement not covered" >onChange(value, 'date')}</span>
         primaryColor={primaryColor}
         primaryTextColor={primaryTextColor}
         secondaryColor={secondaryColor}
         secondaryTextColor={secondaryTextColor}
-                             /&gt;}
+      /&gt;}
       {viewFor === 'month' &amp;&amp; &lt;MonthView
         date={date}
         format={format}
         maxDate={maxDate}
         minDate={minDate}
+        defaultDateView={defaultDateView}
         onMonthChange={<span class="fstat-no" title="function not covered" >(v</span>alue) =&gt; <span class="cstat-no" title="statement not covered" >onChange(value, 'month')}</span>
         primaryColor={primaryColor}
         primaryTextColor={primaryTextColor}
@@ -247,13 +255,14 @@ const CalendarBody = <span class="fstat-no" title="function not covered" >pr</sp
         format={format}
         maxDate={maxDate}
         minDate={minDate}
+        defaultDateView={defaultDateView}
         onYearChange={<span class="fstat-no" title="function not covered" >(v</span>alue) =&gt; <span class="cstat-no" title="statement not covered" >onChange(value, 'year')}</span>
         primaryColor={primaryColor}
         primaryTextColor={primaryTextColor}
         secondaryColor={secondaryColor}
         secondaryTextColor={secondaryTextColor}
         yearBlock={yearBlock}
-                             /&gt;}
+      /&gt;}
     &lt;/Wrapper&gt;
   );
 };
@@ -289,7 +298,7 @@ export default CalendarBody;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-27T19:15:26.552Z
+                at 2022-09-27T19:27:01.695Z
             </div>
         <script src="../prettify.js"></script>
         <script>

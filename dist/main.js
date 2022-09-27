@@ -3544,7 +3544,6 @@ var Wrapper = /*#__PURE__*/styled_components_browser_esm.div.withConfig({
 var DateEditor = function DateEditor(props) {
   var defaultDate = '';
   var defaultDateView = props.defaultDateView,
-      defaultMinView = props.defaultMinView,
       onDateClick = props.onDateClick,
       onMonthClick = props.onMonthClick,
       onYearClick = props.onYearClick,
@@ -3559,13 +3558,7 @@ var DateEditor = function DateEditor(props) {
 
   var _date = dayjs_min_default()(date || dayjs_min_default()().format(format || 'DD-MM-YYYY'), format || 'DD-MM-YYYY');
 
-  var _minDate = '';
-
-  if (defaultMinView && !date) {
-    _minDate = dayjs_min_default()(defaultMinView, format || 'DD-MM-YYYY');
-  } else {
-    _minDate = dayjs_min_default()(minDate, format || 'DD-MM-YYYY');
-  }
+  var _minDate = dayjs_min_default()(minDate, format || 'DD-MM-YYYY');
 
   var _maxDate = dayjs_min_default()(maxDate, format || 'DD-MM-YYYY');
 
@@ -3696,7 +3689,8 @@ var Body = /*#__PURE__*/styled_components_browser_esm.div.withConfig({
 })(["width:100%;text-align:left;height:30px;"]);
 
 var DateView = function DateView(props) {
-  var date = props.date,
+  var defaultDateView = props.defaultDateView,
+      date = props.date,
       format = props.format,
       onDateChange = props.onDateChange,
       maxDate = props.maxDate,
@@ -3712,7 +3706,14 @@ var DateView = function DateView(props) {
 
   var _maxDate = dayjs_min_default()(maxDate, format || 'DD-MM-YYYY');
 
-  var defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  var defaultDate = '';
+
+  if (defaultDateView && !date && dayjs_min_default()(defaultDateView).isValid()) {
+    defaultDate = dayjs_min_default()(defaultDateView, format || 'DD-MM-YYYY');
+  } else {
+    defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  }
+
   var mainDate = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY') : defaultDate;
   var endDate = maxDate ? dayjs_min_default()(maxDate, format || 'DD-MM-YYYY') : null;
   var startDate = minDate ? dayjs_min_default()(minDate, format || 'DD-MM-YYYY') : null;
@@ -3838,7 +3839,8 @@ var MonthView_SelectedSpan = /*#__PURE__*/styled_components_browser_esm(elements
 });
 
 var MonthView = function MonthView(props) {
-  var date = props.date,
+  var defaultDateView = props.defaultDateView,
+      date = props.date,
       format = props.format,
       onMonthChange = props.onMonthChange,
       maxDate = props.maxDate,
@@ -3854,7 +3856,14 @@ var MonthView = function MonthView(props) {
 
   var _maxDate = dayjs_min_default()(maxDate, format || 'DD-MM-YYYY');
 
-  var defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  var defaultDate = '';
+
+  if (defaultDateView && !date && dayjs_min_default()(defaultDateView).isValid()) {
+    defaultDate = dayjs_min_default()(defaultDateView, format || 'DD-MM-YYYY');
+  } else {
+    defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  }
+
   var mainDate = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY') : defaultDate;
   var endDate = maxDate ? dayjs_min_default()(maxDate, format || 'DD-MM-YYYY') : null;
   var startDate = minDate ? dayjs_min_default()(minDate, format || 'DD-MM-YYYY') : null;
@@ -3963,7 +3972,8 @@ var getYears = function getYears(year, main, end, start) {
 };
 
 var YearView = function YearView(props) {
-  var date = props.date,
+  var defaultDateView = props.defaultDateView,
+      date = props.date,
       format = props.format,
       onYearChange = props.onYearChange,
       yearBlock = props.yearBlock,
@@ -3980,7 +3990,14 @@ var YearView = function YearView(props) {
 
   var _maxDate = dayjs_min_default()(maxDate, format || 'DD-MM-YYYY');
 
-  var defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  var defaultDate = '';
+
+  if (defaultDateView && !date && dayjs_min_default()(defaultDateView).isValid()) {
+    defaultDate = dayjs_min_default()(defaultDateView, format || 'DD-MM-YYYY');
+  } else {
+    defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  }
+
   var mainDate = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY') : defaultDate;
   var endDate = maxDate ? dayjs_min_default()(maxDate, format || 'DD-MM-YYYY') : null;
   var startDate = minDate ? dayjs_min_default()(minDate, format || 'DD-MM-YYYY') : null;
@@ -4033,7 +4050,8 @@ YearView.propTypes = {
 
 
 var CalendarBody = function CalendarBody(props) {
-  var viewFor = props.viewFor,
+  var defaultDateView = props.defaultDateView,
+      viewFor = props.viewFor,
       date = props.date,
       format = props.format,
       onChange = props.onChange,
@@ -4051,6 +4069,7 @@ var CalendarBody = function CalendarBody(props) {
     format: format,
     maxDate: maxDate,
     minDate: minDate,
+    defaultDateView: defaultDateView,
     onDateChange: function onDateChange(value) {
       return onChange(value, 'date');
     },
@@ -4063,6 +4082,7 @@ var CalendarBody = function CalendarBody(props) {
     format: format,
     maxDate: maxDate,
     minDate: minDate,
+    defaultDateView: defaultDateView,
     onMonthChange: function onMonthChange(value) {
       return onChange(value, 'month');
     },
@@ -4075,6 +4095,7 @@ var CalendarBody = function CalendarBody(props) {
     format: format,
     maxDate: maxDate,
     minDate: minDate,
+    defaultDateView: defaultDateView,
     onYearChange: function onYearChange(value) {
       return onChange(value, 'year');
     },
@@ -4502,7 +4523,6 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
           yearBlock = _this$state4.yearBlock,
           textDate = _this$state4.textDate;
       var _this$props7 = this.props,
-          defaultMinView = _this$props7.defaultMinView,
           defaultDateView = _this$props7.defaultDateView,
           sortHeader = _this$props7.sortHeader,
           allowEdit = _this$props7.allowEdit,
@@ -4583,7 +4603,6 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
         format: format,
         sortHeader: sortHeader,
         defaultDateView: defaultDateView,
-        defaultMinView: defaultMinView,
         lang: lang,
         maxDate: _maxDate,
         minDate: _minDate,
@@ -4614,6 +4633,7 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
         format: format,
         maxDate: _maxDate,
         minDate: _minDate,
+        defaultDateView: defaultDateView,
         onChange: function onChange(value, unit) {
           return _this4.handleDateChange(value, unit);
         },
