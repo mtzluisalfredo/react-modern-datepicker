@@ -3544,6 +3544,7 @@ var Wrapper = /*#__PURE__*/styled_components_browser_esm.div.withConfig({
 var DateEditor = function DateEditor(props) {
   var defaultDate = '';
   var defaultDateView = props.defaultDateView,
+      defaultMinView = props.defaultMinView,
       onDateClick = props.onDateClick,
       onMonthClick = props.onMonthClick,
       onYearClick = props.onYearClick,
@@ -3558,7 +3559,13 @@ var DateEditor = function DateEditor(props) {
 
   var _date = dayjs_min_default()(date || dayjs_min_default()().format(format || 'DD-MM-YYYY'), format || 'DD-MM-YYYY');
 
-  var _minDate = dayjs_min_default()(minDate, format || 'DD-MM-YYYY');
+  var _minDate = '';
+
+  if (defaultMinView && !date) {
+    _minDate = dayjs_min_default()(defaultMinView, format || 'DD-MM-YYYY');
+  } else {
+    _minDate = dayjs_min_default()(minDate, format || 'DD-MM-YYYY');
+  }
 
   var _maxDate = dayjs_min_default()(maxDate, format || 'DD-MM-YYYY');
 
@@ -4495,6 +4502,7 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
           yearBlock = _this$state4.yearBlock,
           textDate = _this$state4.textDate;
       var _this$props7 = this.props,
+          defaultMinView = _this$props7.defaultMinView,
           defaultDateView = _this$props7.defaultDateView,
           sortHeader = _this$props7.sortHeader,
           allowEdit = _this$props7.allowEdit,
@@ -4575,6 +4583,7 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
         format: format,
         sortHeader: sortHeader,
         defaultDateView: defaultDateView,
+        defaultMinView: defaultMinView,
         lang: lang,
         maxDate: _maxDate,
         minDate: _minDate,
