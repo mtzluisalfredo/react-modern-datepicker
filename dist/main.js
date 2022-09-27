@@ -3542,7 +3542,9 @@ var Wrapper = /*#__PURE__*/styled_components_browser_esm.div.withConfig({
 });
 
 var DateEditor = function DateEditor(props) {
-  var onDateClick = props.onDateClick,
+  var defaultDate = '';
+  var defaultDateView = props.defaultDateView,
+      onDateClick = props.onDateClick,
       onMonthClick = props.onMonthClick,
       onYearClick = props.onYearClick,
       date = props.date,
@@ -3560,7 +3562,12 @@ var DateEditor = function DateEditor(props) {
 
   var _maxDate = dayjs_min_default()(maxDate, format || 'DD-MM-YYYY');
 
-  var defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  if (defaultDateView && !date && dayjs_min_default()(defaultDateView).isValid()) {
+    defaultDate = dayjs_min_default()(defaultDateView, format || 'DD-MM-YYYY');
+  } else {
+    defaultDate = _date.isBetween(minDate ? _minDate.clone().subtract(1, 'day') : _date.clone().subtract(1, 'day'), maxDate ? _maxDate.clone().add(1, 'day') : _date.clone().add(1, 'day')) ? _date : maxDate && _maxDate.isSameOrAfter(_date) ? _date : minDate && _minDate.isSameOrBefore(_date) ? _minDate : maxDate ? _maxDate.clone().subtract(1, 'day') : minDate ? _minDate.clone().add(1, 'day') : _date;
+  }
+
   var day = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY').format('DD') : defaultDate.format('DD');
   var month = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY').format('MMM') : defaultDate.format('MMM');
   var year = date ? dayjs_min_default()(date, format || 'DD-MM-YYYY').format('YYYY') : defaultDate.format('YYYY');
@@ -4488,6 +4495,7 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
           yearBlock = _this$state4.yearBlock,
           textDate = _this$state4.textDate;
       var _this$props7 = this.props,
+          defaultDateView = _this$props7.defaultDateView,
           sortHeader = _this$props7.sortHeader,
           allowEdit = _this$props7.allowEdit,
           format = _this$props7.format,
@@ -4566,6 +4574,7 @@ var ModernDatepicker = /*#__PURE__*/function (_Component) {
         date: dateToEdit,
         format: format,
         sortHeader: sortHeader,
+        defaultDateView: defaultDateView,
         lang: lang,
         maxDate: _maxDate,
         minDate: _minDate,
